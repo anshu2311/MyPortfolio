@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Anshu Kumari - Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2b2d77 0%, #180046 100%);
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    strong {
+      color: #FFA726;
+    }
+
+    /* Increase content text size globally for better readability */
+    p, ul.projects-list li, ul.skills-list li, ul.achievement-list li, ul.roles-list li {
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(18,18,62,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      height: 75px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+      z-index: 1000;
+    }
+    nav .left {
+      font-size: 2.2rem; /* Increased size */
+      font-weight: bold;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 0;
+    }
+    nav ul li a {
+      padding: 8px 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+      color: white;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #FAFF81;
+      color: #28275a;
+      box-shadow: 0 0 15px #FAFF81;
+      font-weight: 700;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 70px auto 40px;
+      padding: 0 20px;
+    }
+
+    #home {
+      overflow: hidden;
+    }
+    .firstSection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      min-height: 70vh;
+      position: relative;
+    }
+    .leftSection {
+      width: 50%;
+      min-width: 300px;
+      font-size: 2.2rem;
+      line-height: 1.3;
+      position: relative;
+    }
+    .animated-gradient-text {
+      background: linear-gradient(90deg, #C471F5, #FAFF81, #49A09D, #AAB6FB, #C471F5);
+      background-size: 400% 400%;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer 7s ease-in-out infinite;
+      user-select: none;
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%;}
+      100% { background-position: 0% 50%;}
+    }
+    .typing {
+      color: #FAFF81;
+      font-weight: bold;
+      font-size: 1.75rem;
+      margin-top: 10px;
+      user-select: none;
+      min-height: 42px;
+    }
+    .rightSection {
+      position:relative;
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-pic {
+      width: 320px;
+      max-width:100%;
+      border-radius: 50%;
+      box-shadow: 0 6px 35px 1px rgba(146,50,236,0.27);
+      animation: float 4s ease-in-out infinite;
+      user-select: none;
+    }
+    @keyframes float {
+      0%, 100% {transform: translateY(0);}
+      50% {transform: translateY(-20px);}
+    }
+
+    .floating-stars {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: visible;
+    }
+    .floating-stars span {
+      position: absolute;
+      display: inline-block;
+      border-radius: 50%;
+      opacity: 0.64;
+      animation: floatStar 7s linear infinite;
+      pointer-events:none;
+      background: #FAFF81;
+    }
+    .floating-stars span:nth-child(1) {width:9px;height:9px;top:10px;left:33%;animation-delay:0s;}
+    .floating-stars span:nth-child(2) {width:14px;height:14px;top:140px;left:7%;animation-delay:1s;}
+    .floating-stars span:nth-child(3) {width:7px;height:7px;top:110px;left:80%;animation-delay:2.2s;}
+    @keyframes floatStar {
+      0% {opacity: .6; transform: translateY(0);}
+      70%{opacity:.85;}
+      100% {opacity:0;transform:translateY(-70px);}
+    }
+
+    /* Flashcards - single row with no scrollbar */
+    .flashcards-wrap {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      margin: 40px 0;
+      justify-content: flex-start;
+      max-width: 100%;
+      overflow-x: visible; /* No scrollbar */
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 1;
+      position: relative;
+    }
+    .flashcard {
+      background: rgba(255,255,255,0.09);
+      box-shadow: 0 0 20px 0 rgba(0, 99, 255, 0.13);
+      border-radius: 15px;
+      min-width: 220px;
+      width: auto;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 30px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.35s, box-shadow 0.35s;
+      user-select: none;
+      flex-shrink: 1;
+    }
+    .flashcard:hover {
+      transform: scale(1.075) rotateY(7deg);
+      box-shadow: 0 10px 80px 12px #AAB6FB26;
+    }
+    .flashcard .emoji {
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+      animation: flashpop 2s infinite;
+      user-select: none;
+    }
+    @keyframes flashpop {
+      0%,100%{transform:scale(1);}
+      18%{transform:scale(1.2);}
+      26%{transform:scale(1);}
+      38%{transform:scale(1.25);}
+      44%{transform:scale(1);}
+    }
+    .flashcard b {
+      font-weight: 700;
+      color: #FAFF81;
+      text-align: center;
+      user-select: none;
+    }
+    .flashcard p {
+      text-align: center;
+      color: #ddd;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    h2 {
+      color: #FAFF81;
+      font-size: 2rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      position: relative;
+      text-align: center;
+      user-select: none;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #49A09D;
+      border-radius: 3px;
+    }
+
+    section {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 40px 30px;
+      margin-bottom: 50px;
+      box-shadow: 0 0 30px rgba(50,150,236,0.07);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    table.education-table {
+      width: 100%;
+      border-collapse: collapse;
+      max-width: 900px;
+      margin: 0 auto;
+      user-select: none;
+    }
+    table.education-table th,
+    table.education-table td {
+      border: 1px solid #9332ec;
+      padding: 10px;
+      text-align: center;
+      font-size: 1rem;
+    }
+    table.education-table th {
+      background: #1a0344;
+      font-weight: 600;
+    }
+
+    ul.projects-list,
+    ul.skills-list,
+    ul.achievement-list,
+    ul.roles-list {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 20px;
+      font-size: 1.15rem;
+      color: #dcdcdc;
+      line-height: 1.7;
+    }
+    ul.projects-list li,
+    ul.skills-list li,
+    ul.achievement-list li,
+    ul.roles-list li {
+      margin-bottom: 15px;
+    }
+    ul.projects-list li b,
+    ul.skills-list li b,
+    ul.achievement-list li b,
+    ul.roles-list li b {
+      color: #FAFF81;
+    }
+
+    /* Contact & Socials - vertical stack */
+    #contact .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 330px;
+      margin: 0 auto 30px auto;
+    }
+    #contact .social-links a {
+      background: rgba(146,50,236,0.15);
+      border-radius: 30px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 16px 0 rgba(146,50,236,0.2);
+      transition: all 0.3s ease;
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: flex-start;
+    }
+    #contact .social-links a:hover {
+      background: #AAB6FB;
+      color: #28275a;
+      box-shadow: 0 0 30px 0 #AAB6FB;
+      transform: scale(1.1);
+    }
+    #contact .social-links img {
+      width: 28px;
+      height: 28px;
+    }
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    #contact form input,
+    #contact form textarea {
+      border-radius: 10px;
+      border: none;
+      padding: 12px 15px;
+      font-size: 1rem;
+      width: 48%;
+      max-width: 100%;
+      resize: vertical;
+      transition: box-shadow 0.3s ease;
+    }
+    #contact form textarea {
+      width: 100%;
+      min-height: 90px;
+    }
+    #contact form input:focus,
+    #contact form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #9332ec;
+      background: rgba(255,255,255,0.08);
+    }
+    #contact form button {
+      background: #9332ec;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: 700;
+      font-size: 1.1rem;
+      width: max-content;
+      margin: 0 auto;
+      display: block;
+    }
+    #contact form button:hover {
+      background: #A184F2;
+    }
+    #contact .contact-info {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #B0C4DE;
+      text-align: center;
+      user-select: text;
+    }
+    #contact .contact-info b {
+      color: #FAFF81;
+    }
+
+    footer {
+      background-color: #140931;
+      padding: 20px 10px 35px;
+      color: #e0e0e0;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      border-top: 1px solid #331e5e;
+      user-select: none;
+    }
+    footer nav ul {
+      display: inline-flex;
+      gap: 30px;
+      padding: 0;
+      margin-bottom: 15px;
+      list-style: none;
+    }
+    footer nav ul li a {
+      color: #FAFF81;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.25s ease;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    footer nav ul li a:hover {
+      color: #AAB6FB;
+      background-color: rgba(170, 182, 251, 0.15);
+      box-shadow: 0 0 15px #AAB6FB;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FAFF81;
+      color: #28275a;
+      padding: 12px 18px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(250,255,129,0.7);
+      display: none;
+      user-select: none;
+      transition: transform 0.3s ease;
+      z-index: 1001;
+      font-weight: 700;
+    }
+    #back-to-top:hover {
+      transform: translateY(-6px) scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+      .firstSection {
+        flex-direction: column-reverse;
+      }
+      .leftSection,
+      .rightSection {
+        width: 90%;
+        text-align: center;
+      }
+      .profile-pic {
+        width: 260px;
+      }
+      nav ul,
+      footer nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+      }
+      #contact form input {
+        width: 100%;
+      }
+      footer nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-stars" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <nav role="navigation" aria-label="Primary Navigation">
+    <div class="left">Anshu Kumari</div>
+    <ul>
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home" class="section-container" aria-label="Home">
+      <div class="firstSection">
+        <div class="leftSection">
+          <span class="animated-gradient-text">Hi, my name is</span> <span class="animated-gradient-text" style="font-weight:bold; font-size:2.8rem;">Anshu Kumari</span>
+          <div class="typing" id="element"></div>
+        </div>
+        <div class="rightSection">
+          <img src="bg.png" alt="Profile Photo" class="profile-pic" loading="lazy" />
+        </div>
+      </div>
+      <div class="flashcards-wrap" aria-label="Highlights">
+        <div class="flashcard" tabindex="0" aria-describedby="flash1-desc">
+          <div class="emoji" aria-hidden="true">🏆</div>
+          <b>GATE CSE 2024</b>
+          <p id="flash1-desc">AIR 2458, top 2% nationwide!</p>
+        </div>
+        <div class="flashcard" tabindex="0" aria-describedby="flash2-desc">
+          <div class="emoji" aria-hidden="true">💡</div>
+          <b>Web Development</b>
+          <p id="flash2-desc">HTML, CSS, JS & modern frameworks</p>
+        </div>
+        <div class="flashcard" tabindex="0" aria-describedby="flash3-desc">
+          <div class="emoji" aria-hidden="true">📄</div>
+          <b>Research Paper</b>
+          <p id="flash3-desc">EMS SaaS published in IJSREM, 2023.</p>
+        </div>
+        <div class="flashcard" tabindex="0" aria-describedby="flash4-desc">
+          <div class="emoji" aria-hidden="true">⚡</div>
+          <b>TA at IIT Jammu</b>
+          <p id="flash4-desc">Assisted in C Programming & DSA</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updated About Me section with more content -->
+    <section id="about" class="section-container">
+      <h2>About Me</h2>
+      <p>
+        Dynamic and results-oriented postgraduate student in Computer Science and Engineering.<br/>
+        Proficient in <strong>C++</strong>, <strong>Python</strong>, and <strong>Java</strong>,
+        with hands-on experience in <strong>web development</strong> and a strong foundation in algorithms & networking.<br/>
+        Always eager to innovate, mentor, and collaborate on transformational tech!
+      </p>
+      <p>
+        Passionate about contributing to open source projects and constantly learning new technologies.
+        I thrive in collaborative environments and enjoy solving complex problems using clean and efficient code.
+        With a strong commitment to continuous personal and professional growth, I am excited to build impactful software solutions
+        that make a difference.
+      </p>
+    </section>
+
+    <section id="education" class="section-container">
+      <h2>Education</h2>
+      <table class="education-table">
+        <tr><th>Degree</th><th>Institute</th><th>Year</th><th>CGPA / %</th></tr>
+        <tr><td>M.Tech (CSE)</td><td>Indian Institute of Technology, Jammu</td><td>2024</td><td>9.43</td></tr>
+        <tr><td>B.Tech (CSE)</td><td>Government Engineering College, Bilaspur</td><td>2022</td><td>8.92</td></tr>
+        <tr><td>Class 12</td><td>CBSE Board</td><td>2018</td><td>88.8%</td></tr>
+        <tr><td>Class 10</td><td>CBSE Board</td><td>2016</td><td>9.8</td></tr>
+      </table>
+    </section>
+
+    <section id="projects" class="section-container">
+      <h2>Projects</h2>
+      <ul class="projects-list">
+        <li><b>Emergency Medical Service (EMS)</b><br/>
+          <i>B.Tech 4th Year Group Project, 2023</i><br/>
+          Developed a SaaS platform using Java and cloud tech—emergency help, live hospital info, and improved response time.<br/>
+          Published in IJSREM, Vol. 07, Issue 05, May 2023.
+        </li>
+        <li><b>Personal Portfolio Website</b><br/>
+          <i>July 2025</i><br/>
+          You are viewing it! Responsive, animated, and built with lively effects and modern UI.
+        </li>
+        <li><b>Automatic Captcha Detection System</b><br/>
+          <i>April 2025 – Guided by Prof. Gaurav Varshney</i><br/>
+          Automation tool to detect/solve captchas on LeetCode (GATE 2023), IRCTC, and more.
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" class="section-container">
+      <h2>Technical Skills</h2>
+      <ul class="skills-list">
+        <li><b>Programming:</b> C++, Python, Java</li>
+        <li><b>Web Development:</b> HTML, CSS, JavaScript</li>
+        <li><b>Database:</b> MySQL</li>
+        <li><b>Operating Systems:</b> Windows, Linux (Elementary)</li>
+        <li><b>Core Courses:</b> Algorithms, Linear Algebra, Probability, DBMS, OOPs, Computer Networks</li>
+      </ul>
+    </section>
+
+    <section id="achievements" class="section-container">
+      <h2>Achievements</h2>
+      <ul class="achievement-list">
+        <li>GATE CSE 2024: AIR 2458 out of 110,000+ participants</li>
+        <li>Silver Medal, NPTEL "Programming in C" (2021)</li>
+        <li>Research paper on EMS published in IJSREM, May 2023</li>
+      </ul>
+    </section>
+
+    <section id="roles" class="section-container">
+      <h2>Roles & Responsibilities</h2>
+      <ul class="roles-list">
+        <li><b>Teaching Assistantship, IIT Jammu:</b> Assisted in teaching and lab sessions for C Programming and Data Structures & Algorithms.</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section-container">
+      <h2>Contact & Socials</h2>
+      <div class="social-links">
+        <a href="https://in.linkedin.com/in/anshu-kumari-2893a9195" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn Icon" />LinkedIn
+        </a>
+        <a href="https://github.com/anshu2311" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Icon" />GitHub
+        </a>
+        <a href="mailto:singhanshu2399@gmail.com">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Gmail Icon" />Gmail
+        </a>
+      </div>
+      <form action="mailto:singhanshu2399@gmail.com" method="POST" enctype="text/plain" style="margin-top: 25px;">
+        <input type="text" name="Name" placeholder="Your Name" required style="padding:9px 13px; margin:5px; border-radius:7px; border:0; width:180px;"/>
+        <input type="email" name="Email" placeholder="Your Email" required style="padding:9px 13px; margin:5px; border-radius:7px; border:0; width:180px;"/>
+        <br/>
+        <textarea name="Message" rows="3" placeholder="Your Message" required style="padding:9px 13px; margin:5px 0; width:90%; border-radius:7px; border:0;"></textarea>
+        <br/>
+        <button type="submit" style="background: #9332ec; color: white; border: none; border-radius: 7px; padding: 10px 22px; cursor: pointer; margin-top: 7px;">Send</button>
+      </form>
+      <div style="margin-top: 20px; text-align:center;">
+        <b>Phone:</b> +91-6268610348<br/>
+        <b>IIT Jammu Email:</b> 2024pcs0021@iitjammu.ac.in
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer navigation">
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#roles">Roles & Responsibilities</a></li>
+      </ul>
+    </nav>
+    &copy; 2025 Anshu Kumari. Designed &amp; coded with <span class="purple">&#10084;</span>.
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">⬆️ Top</button>
+
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: [
+        '<span style="color:#49A09D;">Web Developer.</span>',
+        '<span style="color:#FAFF81;">Programming Enthusiast.</span>',
+        '<span style="color:#AAB6FB;">GATE 2024 AIR 2458.</span>'
+      ],
+      typeSpeed: 53,
+      backSpeed: 35,
+      backDelay: 1100,
+      loop: true,
+      smartBackspace: true,
+      showCursor: true,
+      contentType: 'html'
+    });
+
+    setInterval(() => {
+      document.querySelectorAll('.floating-stars span').forEach(star => {
+        star.style.left = Math.random() * 90 + "%";
+        star.style.top = Math.random() * 170 + 20 + "px";
+      });
+    }, 6000);
+
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if(window.pageYOffset > window.innerHeight / 2){
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(section => observer.observe(section));
+
+    const navLinks = document.querySelectorAll('nav ul li a');
+    window.addEventListener('scroll', () => {
+      let scrollPos = window.scrollY || window.pageYOffset;
+      sections.forEach(section => {
+        if(section.offsetTop - 80 <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos){
+          navLinks.forEach(a => a.classList.remove('active'));
+          const id = section.getAttribute('id');
+          const activeLink = document.querySelector(`nav ul li a[href="#${id}"]`);
+          if(activeLink) activeLink.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
