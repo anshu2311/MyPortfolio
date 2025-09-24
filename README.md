@@ -26,9 +26,9 @@ README.md           # This file
 2. Open `index.html` in any browser.
 3. Scroll to view all sections; animations will trigger as you scroll.
 
-## 🔗 External Libraries Used
+## External Libraries Used
 - [Font Awesome](https://fontawesome.com) for icons
 - [AOS.js](https://michalsnik.github.io/aos/) for scroll animations
 
-## 📬 Contact
-- Email: singhanshu@gmail.co
+## Contact
+- Email: singhanshu2399@gmail.com
