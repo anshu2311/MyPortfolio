@@ -2,7 +2,7 @@
 
 This is a responsive personal portfolio website built by merging two designs. It includes a smooth navigation bar, flashcard-based skill section, project showcase, achievements, and an animated contact section with social links.
 
-## 🚀 Features
+## Features
 - Responsive navigation bar (from Code 2)
 - Hero section with introduction (from Code 1)
 - About section describing background and interests
@@ -13,7 +13,7 @@ This is a responsive personal portfolio website built by merging two designs. It
 - Animations on scroll using AOS.js
 - Flip animation on skill flashcards
 
-## 📁 Project Structure
+## Project Structure
 ```
 index.html          # Main HTML file
 style.css           # (Optional if you extract CSS)
@@ -21,7 +21,7 @@ README.md           # This file
 ```
 > All styles are included in the `<style>` block in index.html
 
-## 🛠️ How to Run
+## How to Run
 1. Download or clone this repo.
 2. Open `index.html` in any browser.
 3. Scroll to view all sections; animations will trigger as you scroll.
